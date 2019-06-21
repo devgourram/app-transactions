@@ -26,3 +26,15 @@ http://localhost:8000/app.php/transactions
 
 **Front**
 
+*1 - Accéder au dossier app-transactions/front*
+
+*2 - Installation des dépendences*
+npm install
+
+*3 - Lancer l'application*
+ng serve
+
+*4 - Accèder à l'url suivante*
+http://localhost:4200/
+
+
