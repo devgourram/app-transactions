@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <import resource="routing_api.xml" type="xml" prefix="/api/v1" />
+
+    <route id="app.transaction.get" path="/transactions">
+        <default key="_controller">TransactionBundle:Transaction:index</default>
+    </route>
+
+    <route id="app.transaction.post" path="/transactions/edit/{id}">
+        <default key="_controller">TransactionBundle:Transaction:edit</default>
+        <requirement key="id">\d+</requirement>
+    </route>
+
+    <route id="app.transaction.delete" path="/transactions/delete/{id}">
+        <default key="_controller">TransactionBundle:Transaction:delete</default>
+        <requirement key="id">\d+</requirement>
+    </route>
+
+    <route id="app.transaction.new" path="/transactions/new">
+        <default key="_controller">TransactionBundle:Transaction:new</default>
+    </route>
+
+    <route id="app.transaction.report" path="/transactions/report">
+        <default key="_controller">TransactionBundle:Transaction:report</default>
+    </route>
+</routes>

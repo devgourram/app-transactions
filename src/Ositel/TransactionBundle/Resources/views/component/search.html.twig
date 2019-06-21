@@ -1,0 +1,33 @@
+{{ form_start(search_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="row mt-5">
+    <div class="col-md-3">
+        {{ form_row(search_form.title) }}
+    </div>
+
+    <div class="col-md-3">
+        {{ form_row(search_form.amount) }}
+    </div>
+
+    <div class="col-md-3">
+        {{ form_row(search_form.category) }}
+    </div>
+
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-success btn-block mt-4"><i class="fa fa-search"></i> Filter</button>
+    </div>
+
+    <div class="col-md-2">
+        {{ form_row(search_form.isValid) }}
+    </div>
+
+    <div class="col-md-2">
+        {{ form_row(search_form.isOutput) }}
+    </div>
+
+    <div class="col-md-2">
+        {{ form_row(search_form.isInput) }}
+    </div>
+</div>
+
+{{ form_end(search_form) }}

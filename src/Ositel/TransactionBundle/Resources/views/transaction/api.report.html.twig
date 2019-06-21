@@ -1,0 +1,50 @@
+{% extends '@Transaction/base.html.twig' %}
+
+{% block body%}
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <form>
+                <div class="col-md-3">
+                    <select name="month" class="form-control">
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="loader" style="position: absolute; top: 50%; left: 50%;">
+                <div class="spinner-border text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $(document).ready(function(){
+       $.ajax({
+           url: "{{ path('app.transaction.api.list') }}",
+           type: "GET",
+           success: function(response){
+               $("div#loader").hide();
+           }
+       })
+    });
+</script>
+{% endblock %}

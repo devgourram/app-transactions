@@ -1,0 +1,69 @@
+{% extends '@Transaction/base.html.twig' %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        {% include '@Transaction/component/search.html.twig' %}
+    </div>
+</div>
+<hr/>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="{{ path('app.transaction.new') }}" class="btn btn-success mb-4"><i class="fa fa-plus"></i> Create transaction</a>
+        <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Output?</th>
+            <th scope="col">Input?</th>
+            <th scope="col">Valid?</th>
+            <th scope="col">Tags</th>
+            <th scope="col">Date creation</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for transation in transactions %}
+        <tr>
+            <th scope="row">{{ transation.id }}</th>
+                <td><b>{{ transation.category }}</b></td>
+                <td>{{ transation.title }}</td>
+                <td>{{ transation.amount }}</td>
+                <td>{{ transation.isOutput }}</td>
+                <td>{{ transation.isInput }}</td>
+                <td>{{ transation.isValid }}</td>
+                <td>
+                    {% for tag in transation.tags %}
+                        <span class="badge badge-info">{{ tag.name }}</span>
+                    {% endfor %}
+                </td>
+                <td>{{ transation.createdAt|date("m/d/Y") }}</td>
+                <td>
+                    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group" role="group" aria-label="First group">
+                            <a href="{{ path('app.transaction.post', {'id' : transation.id }) }}" class="btn btn-light">
+                                <i class="fa fa-edit"></i>
+                                edit
+                            </a>
+                            <a href="{{ path('app.transaction.delete', {'id' : transation.id }) }}" class="btn btn-danger">
+                                <i class="fas fa-minus-circle"></i>
+                                delete
+                            </a>
+                        </div>
+                    </div>
+                </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <hr/>
+        {% include '@Transaction/component/pagination.html.twig' %}
+    </div>
+</div>
+
+{% endblock %}

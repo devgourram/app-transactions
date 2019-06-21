@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Transactions</h3>
+      <table class="table table-responsive">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Category</th>
+          <th scope="col">Title</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Output?</th>
+          <th scope="col">Input?</th>
+          <th scope="col">Valid?</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Date creation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let transaction of data.transactions">
+          <tr>
+            <th scope="row">{{transaction.id}}</th>
+            <td><b>{{ transaction.category }}</b></td>
+            <td>{{ transaction.title }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.isOutput }}</td>
+            <td>{{ transaction.isInput }}</td>
+            <td>{{ transaction.isValid }}</td>
+            <td>
+              {{ transaction.tags }}
+            </td>
+            <td>{{ transaction.createdAt.date }}</td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

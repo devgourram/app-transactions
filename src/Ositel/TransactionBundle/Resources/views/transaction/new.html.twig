@@ -1,0 +1,10 @@
+{% extends '@Transaction/base.html.twig' %}
+
+{% block body %}
+    <div class="row mt-5">
+        <h3>Create new transaction</h3>
+        <div class="col-md-12">
+            {% include '@Transaction/transaction/form.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
