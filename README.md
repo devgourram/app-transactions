@@ -4,7 +4,7 @@ INSTALL
 Pour installer le projet, suivre les étapes suivantes:
 **Backend**
 *1 - Cloner le repos git suivant :* 
-git clone https://git.com/devgourram/app-transactions.git
+git clone https://github.com/devgourram/app-transactions.git
 
 *2 - Accèder au répértoire du projet et lancer l'installation des dépendances :*
 cd app-transactions && composer install 
