@@ -18,6 +18,15 @@ export class AppComponent {
     this.getData();
   }
 
+  onChange(selectedMonth) {
+    let baseApiUrl = this.apiSearchUrl;
+    this.apiSearchUrl += '?month=' + selectedMonth;
+    console.log(this.apiSearchUrl);
+    this.getTransactions();
+    this.getData();
+    this.apiSearchUrl = baseApiUrl;
+  }
+
   getData() {
     return this.http.get(this.apiSearchUrl).map((res: Response) => res);
   }

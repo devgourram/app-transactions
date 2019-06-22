@@ -48,5 +48,12 @@ interface TransactionManagerInterface
      *
      * @return float
      */
-    public function calculateTotalInputOutput(array $transactions): float;
+    public function calculateTotalOutput(array $transactions): float ;
+
+    /**
+     * @param array $transactions
+     *
+     * @return float
+     */
+    public function calculateTotalInput(array $transactions): float;
 }

@@ -39,16 +39,19 @@ class TransactionApiController extends Controller
     public function getAction(Request $request)
     {
         $now = new \DateTime();
-        $params = $request->request->all();
+        $params = $request->query->all();
         $month = (isset($params['month'])) ? $params['month'] : $now->format('m');
         $year = $now->format('Y');
 
         $transactions = $this->transactionManager->filter(['month' => $month, 'year' => $year]);
-        $totalAmount = $this->transactionManager->calculateTotalInputOutput($transactions);
+        $totalInput = $this->transactionManager->calculateTotalInput($transactions);
+        $totalOutput = $this->transactionManager->calculateTotalOutput($transactions);
 
         return new JsonResponse([
             'transactions' => $transactions,
-            'total_amount' => $totalAmount
+            'total_amount' => $totalInput + $totalOutput,
+            'total_output' => $totalOutput,
+            'total_input' => $totalInput
         ]);
     }
 }

@@ -104,13 +104,34 @@ class TransactionManager implements TransactionManagerInterface
      *
      * @return float
      */
-    public function calculateTotalInputOutput(array $transactions): float
+    public function calculateTotalOutput(array $transactions): float
     {
         $sum = 0.00;
 
         /** @var Transaction $transaction */
         foreach ($transactions as $transaction) {
-            $sum += $transaction['amount'];
+            if ($transaction['isOutput']) {
+                $sum += $transaction['amount'];
+            }
+        }
+
+        return $sum;
+    }
+
+    /**
+     * @param array $transactions
+     *
+     * @return float
+     */
+    public function calculateTotalInput(array $transactions): float
+    {
+        $sum = 0.00;
+
+        /** @var Transaction $transaction */
+        foreach ($transactions as $transaction) {
+            if ($transaction['isInput']) {
+                $sum += $transaction['amount'];
+            }
         }
 
         return $sum;
